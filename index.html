@@ -31,7 +31,7 @@
       var losses = 0;
       var turns = 12;
       var userGuess = "";
-      var presidents = ["Washington", "Adams", "Jefferson", "Madison", "Monroe", "Adams", "Jackson", "Van Buren", "Harrison", "Tyler", "Polk", "Taylor", "Fillmore", "Pierce", "Buchanan", "Lincoln", "Johnson", "Grant", "Hayes", "Garfield", "Arthur", "Cleveland", "McKinley", "Roosevelt", "Taft", "Wilson", "Harding", "Coolidge", "Hoover", "Truman", "Eisenhower", "Kennedy", "Nixon", "Ford", "Carter", "Reagan", "Bush", "Clinton", "Obama", "Trump"];
+      var presidents = ["washington", "adams", "jefferson", "madison", "monroe", "adams", "jackson", "vanburen", "harrison", "tyler", "polk", "taylor", "fillmore", "pierce", "buchanan", "lincoln", "johnson", "grant", "hayes", "garfield", "arthur", "cleveland", "mckinley", "roosevelt", "taft", "wilson", "harding", "coolidge", "hoover", "truman", "eisenhower", "kennedy", "nixon", "ford", "carter", "reagan", "bush", "clinton", "obama", "trump"];
       var randPrez = presidents[Math.floor(Math.random()*presidents.length)];
       var guessedSoFar = [];
       var blanks = [];
@@ -50,10 +50,30 @@
         for (var i = 0; i < randPrez.length; i++) {
           blanks[i] = "__";
         }
+        alert("Type any letter");
         board =
           "<h2>" + blanks + "</h2>";
           document.querySelector("#game-board").innerHTML = board;
+          var randPrezArr = Array.from(randPrez);
+console.log (randPrez);
+console.log (blanks);
+            document.onkeyup = function(event) {
+              userGuess = event.key;
+              for (var i = 0; i < randPrezArr.length; i++) {
+                if (userGuess == randPrezArr[i]) {
+                  blanks [i] = userGuess;
+                  board =
+                    "<h2>" + blanks + "</h2>";
+                    document.querySelector("#game-board").innerHTML = board;
+                }
+
+              }
+
+            }
       }
+
+
+
 
 
 

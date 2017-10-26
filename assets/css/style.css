@@ -4,6 +4,9 @@ body {
   font-weight: bold;
   background-color: #eed3af;
 }
+.row {
+  padding-top: 2%;
+}
 h1 {
   text-align: center;
   font-size: 50px;
