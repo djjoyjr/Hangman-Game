@@ -36,6 +36,8 @@
       var guessedSoFar = [];
       var blanks = [];
       var board = [];
+      var goodGuess = false;
+      var stats = "";
 
       function newGame () {
         blanks = [];
@@ -56,23 +58,28 @@
             userGuess = event.key;
             guessedSoFar.push(userGuess);
 
-
-            var stats =
-              "<h3>Wins: " + wins + "</h3>" +
-              "<h3>Losses: " + losses + "</h3>" +
-              "<h3>Guesses remaining: " + turns + "</h3>" +
-              "<h3>Letters guessed so far: " + guessedSoFar + "</h3>";
-              document.querySelector("#stat-box").innerHTML = stats;
-
               //Loop to check guessed letter against array.
               for (var i = 0; i < randPrezArr.length; i++) {
                 if (userGuess == randPrezArr[i]) {
                   blanks [i] = userGuess;
+                  goodGuess = true;
                 }
               }
-              turns = 12-(guessedSoFar.length);
-              console.log(turns);
+              if (goodGuess == true) {
+                console.log(turns);
+                goodGuess = false;
+              }
+              else {
+                turns --;
+                console.log(turns);
+              }
 
+              stats =
+                "<h3>Wins: " + wins + "</h3>" +
+                "<h3>Losses: " + losses + "</h3>" +
+                "<h3>Guesses remaining: " + turns + "</h3>" +
+                "<h3>Letters guessed so far: " + guessedSoFar + "</h3>";
+                document.querySelector("#stat-box").innerHTML = stats;
 
               board =
               "<h2>" + blanks.join("  ") + "</h2>";
