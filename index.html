@@ -36,12 +36,6 @@
       var guessedSoFar = [];
       var blanks = [];
       var board = [];
-      var stats =
-        "<h3>Wins: " + wins + "</h3>" +
-        "<h3>Losses: " + losses + "</h3>" +
-        "<h3>Guesses remaining: " + turns + "</h3>" +
-        "<h3>Letters guessed so far: " + guessedSoFar + "</h3>";
-        document.querySelector("#stat-box").innerHTML = stats;
 
       function newGame () {
         blanks = [];
@@ -51,33 +45,41 @@
           blanks[i] = "__";
         }
         alert("Type any letter");
+
         board =
           "<h2>" + blanks.join("  ") + "</h2>";
           document.querySelector("#game-board").innerHTML = board;
           var randPrezArr = Array.from(randPrez);
-// console.log (randPrez);
-// console.log (blanks);
-            document.onkeyup = function(event) {
-              userGuess = event.key;
+
+          //Accept user keyboard input starts here
+          document.onkeyup = function(event) {
+            userGuess = event.key;
+            guessedSoFar.push(userGuess);
+            //console.log(guessedSoFar);
+
+            var stats =
+              "<h3>Wins: " + wins + "</h3>" +
+              "<h3>Losses: " + losses + "</h3>" +
+              "<h3>Guesses remaining: " + turns + "</h3>" +
+              "<h3>Letters guessed so far: " + guessedSoFar + "</h3>";
+              document.querySelector("#stat-box").innerHTML = stats;
+
+              //Loop to check guessed letter against array.
               for (var i = 0; i < randPrezArr.length; i++) {
                 if (userGuess == randPrezArr[i]) {
                   blanks [i] = userGuess;
                   board =
-                    "<h2>" + blanks.join("  ") + "</h2>";
-                    document.querySelector("#game-board").innerHTML = board;
-
+                  "<h2>" + blanks.join("  ") + "</h2>";
+                  document.querySelector("#game-board").innerHTML = board;
+                  //onsole.log (randPrezArr);
+                  //console.log (blanks);
                 }
-
               }
+          }  //Accept user keyboard input ends here
 
-            }
+
+
       }
-
-
-
-
-
-
     </script>
 
   </body>
