@@ -55,7 +55,7 @@
           document.onkeyup = function(event) {
             userGuess = event.key;
             guessedSoFar.push(userGuess);
-            //console.log(guessedSoFar);
+
 
             var stats =
               "<h3>Wins: " + wins + "</h3>" +
@@ -68,13 +68,17 @@
               for (var i = 0; i < randPrezArr.length; i++) {
                 if (userGuess == randPrezArr[i]) {
                   blanks [i] = userGuess;
-                  board =
-                  "<h2>" + blanks.join("  ") + "</h2>";
-                  document.querySelector("#game-board").innerHTML = board;
-                  //onsole.log (randPrezArr);
-                  //console.log (blanks);
                 }
               }
+              turns = 12-(guessedSoFar.length);
+              console.log(turns);
+
+
+              board =
+              "<h2>" + blanks.join("  ") + "</h2>";
+              document.querySelector("#game-board").innerHTML = board;
+              //onsole.log (randPrezArr);
+              //console.log (blanks);
           }  //Accept user keyboard input ends here
 
 
