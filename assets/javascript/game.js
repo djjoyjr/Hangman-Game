@@ -21,11 +21,11 @@ function newGame () {
   for (var i = 0; i < randPrez.length; i++) {
     blanks[i] = "__";
   }
+
 board =
   "<h2>" + blanks.join("  ") + "</h2>";
   document.querySelector("#game-board").innerHTML = board;
   var randPrezArr = Array.from(randPrez);
-  console.log(randPrez);
 
   //Accept user keyboard input
   document.onkeyup = function(event) {
@@ -60,10 +60,10 @@ if (blankFilter.length==prezFilter.length) {
 }
 
 if (win) {
-alert("Correct! The president was " + randPrez);
-wins++;
-win = false;
-newGame();
+  alert("Correct! The president was " + randPrez);
+  wins++;
+  win = false;
+  newGame();
 }
 
 if (turns == 0){
